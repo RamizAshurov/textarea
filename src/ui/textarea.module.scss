@@ -1,0 +1,157 @@
+// ─── Palette (3 colours) ─────────────────────────────────────────────────────
+// Neutral dark for text, mid-grey for borders/secondary, one soft blue accent
+$ink:     #1a1a1a;
+$muted:   #8a8a8a;
+$border:  #e0e0e0;
+$surface: #ffffff;
+$bg:      #f5f5f5;
+$accent:  #4a7cf7;        // one accent — used sparingly
+
+$radius:  6px;
+$mono:    'JetBrains Mono', 'Fira Mono', monospace;
+$sans:    'Inter', system-ui, sans-serif;
+
+// ─── Wrapper ─────────────────────────────────────────────────────────────────
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  font-family: $sans;
+}
+
+// ─── Textarea ────────────────────────────────────────────────────────────────
+.textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font-family: $sans;
+  font-size: 14px;
+  line-height: 1.6;
+  color: $ink;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  resize: vertical;
+  outline: none;
+  caret-color: $accent;
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: $muted;
+  }
+
+  &:focus {
+    border-color: $accent;
+  }
+}
+
+// ─── Dropdown ────────────────────────────────────────────────────────────────
+.dropdown {
+  position: fixed;
+  z-index: 9999;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  min-width: 220px;
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  &::-webkit-scrollbar { width: 3px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: $border; border-radius: 2px; }
+}
+
+// ─── Item ─────────────────────────────────────────────────────────────────────
+.item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    background: $bg;
+
+    .username { color: $accent; }
+  }
+}
+
+// ─── Avatar ──────────────────────────────────────────────────────────────────
+.avatar {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: $bg;
+  border: 1px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: $muted;
+  letter-spacing: 0.02em;
+}
+
+// ─── Info ─────────────────────────────────────────────────────────────────────
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+}
+
+.name {
+  font-size: 13px;
+  font-weight: 500;
+  color: $ink;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.username {
+  font-size: 11px;
+  font-family: $mono;
+  color: $muted;
+  transition: color 0.1s ease;
+}
+
+// ─── Empty state ─────────────────────────────────────────────────────────────
+.empty {
+  position: fixed;
+  z-index: 9999;
+  padding: 8px 12px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  font-size: 13px;
+  color: $muted;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+// ─── Hint ─────────────────────────────────────────────────────────────────────
+.hint {
+  margin-top: 6px;
+  font-size: 11px;
+  color: $muted;
+
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 4px;
+    background: $bg;
+    border: 1px solid $border;
+    border-radius: 3px;
+    font-family: $mono;
+    font-size: 10px;
+    color: $ink;
+  }
+}
